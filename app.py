@@ -4,8 +4,6 @@ import os
 
 openai.api_key = st.secrets["api_key"]
 
-client = openai.OpenAI()
-
 
 # Streamlit app title and caption
 st.title("구영초 학사일정")
@@ -32,7 +30,7 @@ if prompt:
     st.markdown(f"**👤 You:** {prompt}")
     
     # OpenAI API 호출
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="gpt-4o", 
         messages=[
             {"role": "system", "content": '''구영초등학교의 학사일정을 알려줘라. 경어체로 답변하여라.
